@@ -30,6 +30,5 @@ app.post('https://interview.adpeai.com/api/v1/submit-task', {
     result: 8531629869710552
   }
 }, (error, res, body) => {
-  console.log(`Status Code: ${res.statusCode}`);
-  console.log(`Description: ${body}`);
+  console.log(`Status Code: ${res.statusCode} | Description: ${body}`);
 });
