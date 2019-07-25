@@ -29,7 +29,7 @@ var app = require('request');
 
   /* POST a task */
 
-  function submitTask(id, result){
+  const submitTask = (id, result) => {
     app.post('https://interview.adpeai.com/api/v1/submit-task', {
       json: {
         id,
