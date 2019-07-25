@@ -2,31 +2,30 @@ var app = require('request');
 
 /* GET all tasks and perform calculations */
 
+ const getTask = () => {
   app.get('https://interview.adpeai.com/api/v1/get-task', (error, res, body) => {
-      let task = JSON.parse(body);
-      let id = task.id;
-      let operation = task.operation;
-      let result = 0;
+    let task = JSON.parse(body);
+    let id = task.id;
+    let operation = task.operation;
+    let result = 0;
+
+    if (operation === 'addition') result = task.left + task.right;
   
-      if (operation === 'addition')
-            result = task.left + task.right;
-    
-      if (operation === 'subtraction')
-            result = task.left - task.right;
-    
-      if (operation === 'multiplication')
-            result = task.left * task.right;
-    
-      if (operation === 'division')
-            result = task.left / task.right;
-    
-      if (operation === 'remainder')
-            result = task.left % task.right;
+    if (operation === 'subtraction') result = task.left - task.right;
   
-      console.log(task); 
-      console.log(result);
-      submitTask.apply(this, [id, result]); // passing arguments to submitTask() function 
-    });
+    if (operation === 'multiplication') result = task.left * task.right;
+  
+    if (operation === 'division') result = task.left / task.right;
+
+    if (operation === 'remainder') result = task.left % task.right;
+
+    console.log(task); 
+    console.log(result);
+    submitTask.apply(this, [id, result]); // passing arguments to submitTask() function 
+  });
+}   
+
+getTask();
 
   /* POST a task */
 
