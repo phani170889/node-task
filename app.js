@@ -21,13 +21,13 @@ app.get('https://interview.adpeai.com/api/v1/get-task', (error, res, body) => {
 });
 
 
-// app.post('https://interview.adpeai.com/api/v1/submit-task', {
-//   json: {
-//     id: 'fac832de-ceb4-44e5-a6e5-315299ebf389',
-//     result: 8531629869710552
-//   }
-// }, (error, res, body) => {
-//   console.log(`Status Code: ${res.statusCode}`);
-//   console.log(`Description: ${body}`);
-// });
+app.post('https://interview.adpeai.com/api/v1/submit-task', {
+  json: {
+    id: 'fac832de-ceb4-44e5-a6e5-315299ebf389',
+    result: 8531629869710552
+  }
+}, (error, res, body) => {
+  console.log(`Status Code: ${res.statusCode}`);
+  console.log(`Description: ${body}`);
+});
 
