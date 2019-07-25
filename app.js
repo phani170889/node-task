@@ -7,24 +7,18 @@ var app = require('request');
     let task = JSON.parse(body);
     let id = task.id;
     let operation = task.operation;
-    let result = 0;
 
-    if (operation === 'addition') result = task.left + task.right;
-  
-    if (operation === 'subtraction') result = task.left - task.right;
-  
-    if (operation === 'multiplication') result = task.left * task.right;
-  
-    if (operation === 'division') result = task.left / task.right;
-
-    if (operation === 'remainder') result = task.left % task.right;
+    const result = (operation === 'addition') ? task.left + task.right :
+                   (operation === 'subtraction') ? task.left - task.right :
+                   (operation === 'multiplication') ? task.left * task.right :
+                   (operation === 'division') ? task.left / task.right :
+                   (operation === 'remainder') ? task.left % task.right : null;
 
     console.log(task); 
     console.log(result);
     submitTask.apply(this, [id, result]); // passing arguments to submitTask() function 
   });
 }   
-
 getTask();
 
   /* POST a task */
