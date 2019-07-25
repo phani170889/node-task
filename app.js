@@ -1,34 +1,41 @@
 var app = require('request');
 
-/* GET all tasks and calculations */
+/* GET all tasks and perform calculations */
 
-app.get('https://interview.adpeai.com/api/v1/get-task', (error, res, body) => {
-  let task = JSON.parse(body);
-  console.log(task); 
+  app.get('https://interview.adpeai.com/api/v1/get-task', (error, res, body) => {
+      let task = JSON.parse(body);
+      let id = task.id;
+      let result = 0;
+  
+      if (task.operation === 'addition')
+            result = task.left + task.right;
+    
+      if (task.operation === 'subtraction')
+            result = task.left - task.right;
+    
+      if (task.operation === 'multiplication')
+            result = task.left * task.right;
+    
+      if (task.operation === 'division')
+            result = task.left / task.right;
+    
+      if (task.operation === 'remainder')
+            result = task.left % task.right;
+  
+      console.log(task); 
+      console.log(result);
+      submitTask.apply(this, [id, result]); // passing arguments to submitTask() function 
+    });
 
-  if (task.operation === 'addition')
-        console.log(task.left + task.right);
+  /* POST a task */
 
-  if (task.operation === 'subtraction')
-       console.log(task.left - task.right);
-
-  if (task.operation === 'multiplication')
-       console.log(task.left * task.right);
-
-  if (task.operation === 'division')
-        console.log(task.left / task.right);
-
-  if (task.operation === 'remainder')
-        console.log(task.left % task.right);
-});
-
-/* POST a task */
-
-app.post('https://interview.adpeai.com/api/v1/submit-task', {
-  json: {
-    id: 'fac832de-ceb4-44e5-a6e5-315299ebf389',
-    result: 8531629869710552
+  function submitTask(id, result){
+    app.post('https://interview.adpeai.com/api/v1/submit-task', {
+      json: {
+        id,
+        result
+      }
+    }, (error, res, body) => {
+      console.log(`Status Code: ${res.statusCode} | Description: ${body}`);
+    });
   }
-}, (error, res, body) => {
-  console.log(`Status Code: ${res.statusCode} | Description: ${body}`);
-});
