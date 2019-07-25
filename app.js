@@ -12,13 +12,13 @@ app.get('https://interview.adpeai.com/api/v1/get-task', (error, res, body) => {
   if (task.operation === 'subtraction')
        console.log(task.left - task.right);
 
-   if (task.operation === 'multiplication')
+  if (task.operation === 'multiplication')
        console.log(task.left * task.right);
 
   if (task.operation === 'division')
         console.log(task.left / task.right);
 
-   if (task.operation === 'remainder')
+  if (task.operation === 'remainder')
         console.log(task.left % task.right);
 });
 
