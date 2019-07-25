@@ -5,21 +5,22 @@ var app = require('request');
   app.get('https://interview.adpeai.com/api/v1/get-task', (error, res, body) => {
       let task = JSON.parse(body);
       let id = task.id;
+      let operation = task.operation;
       let result = 0;
   
-      if (task.operation === 'addition')
+      if (operation === 'addition')
             result = task.left + task.right;
     
-      if (task.operation === 'subtraction')
+      if (operation === 'subtraction')
             result = task.left - task.right;
     
-      if (task.operation === 'multiplication')
+      if (operation === 'multiplication')
             result = task.left * task.right;
     
-      if (task.operation === 'division')
+      if (operation === 'division')
             result = task.left / task.right;
     
-      if (task.operation === 'remainder')
+      if (operation === 'remainder')
             result = task.left % task.right;
   
       console.log(task); 
