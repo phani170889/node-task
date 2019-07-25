@@ -1,5 +1,7 @@
 var app = require('request');
 
+/* GET all tasks and calculations */
+
 app.get('https://interview.adpeai.com/api/v1/get-task', (error, res, body) => {
   let task = JSON.parse(body);
   console.log(task); 
@@ -20,6 +22,7 @@ app.get('https://interview.adpeai.com/api/v1/get-task', (error, res, body) => {
         console.log(task.left % task.right);
 });
 
+/* POST a task */
 
 app.post('https://interview.adpeai.com/api/v1/submit-task', {
   json: {
